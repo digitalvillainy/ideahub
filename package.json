@@ -1,0 +1,36 @@
+{
+  "name": "neoan3",
+  "version": "1.0.0",
+  "description": "PHP7",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sroehrl/neoan3.git"
+  },
+  "keywords": [
+    "neoan3",
+    "custom-element",
+    "php"
+  ],
+  "author": "Stefan Roehrl",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sroehrl/neoan3/issues"
+  },
+  "homepage": "https://github.com/sroehrl/neoan3#readme",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "axios-wrapper": "^0.1.4",
+    "bulma": "^0.7.5",
+    "crypto-js": "^3.1.9-1",
+    "lodash": "^4.17.11",
+    "requirejs": "^2.3.6"
+  },
+  "devDependencies": {
+    "node-sass": "^4.12.0",
+    "vue": "^2.6.10"
+  }
+}

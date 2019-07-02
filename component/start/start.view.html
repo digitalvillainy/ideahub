@@ -1,0 +1,57 @@
+<section class="hero is-primary is-fullheight is-bold" id="login">
+    <div class="hero-head">
+        <h1 class="title">IdeaHub</h1>
+        <h2 class="subtitle">
+            A social media platform that enables innovators to create easier.
+        </h2>
+    </div>
+    <div class="hero-body">
+        <div class="container">
+            <div class="field">
+                <p class="control has-icons-left">
+                    <input
+                            class="input"
+                            type="email"
+                            placeholder="Email"
+                            pattern=".+@eagleproductivity.com"
+                            v-model="user.name"
+                            required>
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-envelope"></i>
+                    </span>
+                </p>
+            </div>
+            <div class="field">
+                <p class="control has-icons-left">
+                    <input
+                            class="input"
+                            type="password"
+                            placeholder="Password"
+                            minlength="8"
+                            v-model="user.password"
+                            required>
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-lock"></i>
+                    </span>
+                </p>
+            </div>
+            <div class="container">
+                <a href="#"
+                   class="button is-warning"
+                   v-on:click="login(user)">
+                    LOGIN
+                </a>
+                <a href="#"
+                   class="button is-info"
+                   v-on:click="registerUser(user)">
+                    REGISTER
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="hero-foot has-text-centered">
+        <span>
+            - Created by Sir Dr. Roberto Rivera PHD ESQ III -
+        </span>
+    </div>
+</section>
