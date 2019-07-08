@@ -3,8 +3,12 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/firebase/php-jwt" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/mnsami/composer-custom-directory-installer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/neoan3-apps/db" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/neoan3-apps/jwt" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/neoan3-apps/ops" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/neoan3-apps/stateless" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -4,23 +4,38 @@
 namespace Neoan3\Components;
 
 use Neoan3\Apps\Ops;
+use Neoan3\Apps\Db;
+use Neoan3\Apps\DbException;
 use Neoan3\Core\Unicore;
 
+/**
+ * Class Start
+ *
+ * @package Neoan3\Components
+ */
 class Start extends Unicore {
+    /**
+     * @var array
+     */
     private $components = ['start'];
+
+    /**
+     *
+     */
     function init(){
         $this->uni('ideahub')
             ->callback($this,'setup')
             ->hook('main','start')
-             ->output();
+            ->output();
     }
 
+    /**
+     * @param $frame
+     */
     function setup($frame){
         foreach ($this->components as $component){
             $frame->vueComponent($component);
         }
     }
-
-
 
 }

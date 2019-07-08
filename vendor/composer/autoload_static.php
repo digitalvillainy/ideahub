@@ -11,12 +11,23 @@ class ComposerStaticInit08c655667aeb73cd10826393dc2d68c6
         array (
             'Neoan3\\Apps\\' => 12,
         ),
+        'F' => 
+        array (
+            'Firebase\\JWT\\' => 13,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
         'Neoan3\\Apps\\' => 
         array (
-            0 => __DIR__ . '/..' . '/neoan3-apps/ops',
+            0 => __DIR__ . '/..' . '/neoan3-apps/db',
+            1 => __DIR__ . '/..' . '/neoan3-apps/jwt',
+            2 => __DIR__ . '/..' . '/neoan3-apps/ops',
+            3 => __DIR__ . '/..' . '/neoan3-apps/stateless',
+        ),
+        'Firebase\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
         ),
     );
 

@@ -14,7 +14,7 @@
                             type="email"
                             placeholder="Email"
                             pattern=".+@eagleproductivity.com"
-                            v-model="user.name"
+                            v-model="user.email"
                             required>
                     <span class="icon is-small is-left">
                       <i class="fas fa-envelope"></i>
@@ -38,12 +38,12 @@
             <div class="container">
                 <a href="#"
                    class="button is-warning"
-                   v-on:click="login(user)">
+                   v-on:click.prevent="login(user)">
                     LOGIN
                 </a>
                 <a href="#"
                    class="button is-info"
-                   v-on:click="registerUser(user)">
+                   v-on:click.prevent="registerUser(user)">
                     REGISTER
                 </a>
             </div>

@@ -7,9 +7,39 @@
  */
 
 namespace Neoan3\Frame;
+use Neoan3\Apps\Db;
+use Neoan3\Apps\DbException;
+use Neoan3\Apps\DbEnvironment;
+use Neoan3\Apps\Stateless;
 use Neoan3\Core\Serve;
 
+/**
+ * Class Ideahub
+ *
+ * @package Neoan3\Frame
+ */
 class Ideahub extends Serve{
+
+    /**
+     * Ideahub constructor.
+     *
+     * @throws \Neoan3\Apps\DbException
+     */
+    function __construct() {
+        Db::setEnvironment([
+            'assumes_uuid'=>true,
+            'name'=>'ideahub'
+                           ]);
+        Stateless::setSecret('123456');
+        parent::__construct();
+    }
+
+    /**
+     * @param       $element
+     * @param array $params
+     *
+     * @return $this
+     */
     function vueComponent($element, $params = []) {
         $params['base'] = base;
         $path = path . '/component/' . $element . '/' . $element . '.ce.';
@@ -26,6 +56,9 @@ class Ideahub extends Serve{
         return $this;
     }
 
+    /**
+     * @return array
+     */
     function constants(){
         return [
             'base'=>[base],
@@ -45,9 +78,10 @@ class Ideahub extends Serve{
                 ['src' => base . 'node_modules/axios/dist/axios.min.js'],
                 ['src' => base . 'node_modules/lodash/lodash.min.js'],
                 ['src' => base . 'node_modules/crypto-js/crypto-js.js'],
+                ['src' => base . 'asset/fontawesome/js/all.min.js'],
             ],
             'stylesheet'=>[
-            ''.base.'node_modules/bulma/css/bulma.css',
+            ''.base.'frame/ideahub/ideahub.css',
             ]
         ];
     }
