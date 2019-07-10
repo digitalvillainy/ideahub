@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5a1626d76d1d696b674ef194b9e97b8d",
+    "content-hash": "b5c1bded45cb102f6e443d07fb34c1a1",
     "packages": [
         {
             "name": "firebase/php-jwt",
@@ -103,6 +103,44 @@
                 "composer-plugin"
             ],
             "time": "2017-08-14T19:50:19+00:00"
+        },
+        {
+            "name": "neoan3-apps/crypto-js",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sroehrl/cryptojs-aes-php.git",
+                "reference": "24f5c916fe08b9798d174d9b23bcb12f108bcb12"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sroehrl/cryptojs-aes-php/zipball/24f5c916fe08b9798d174d9b23bcb12f108bcb12",
+                "reference": "24f5c916fe08b9798d174d9b23bcb12f108bcb12",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Neoan3\\Apps\\": "./"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stefan Roehrl",
+                    "homepage": "http://neoan.us"
+                },
+                {
+                    "name": "Roland Eigelsreiter",
+                    "homepage": "https://github.com/brainfoolong",
+                    "role": "developer"
+                }
+            ],
+            "description": "neoan3 cryptojs class",
+            "time": "2019-01-26T01:20:04+00:00"
         },
         {
             "name": "neoan3-apps/db",
@@ -251,7 +289,8 @@
         "neoan3-apps/ops": 20,
         "neoan3-apps/db": 20,
         "neoan3-apps/jwt": 20,
-        "neoan3-apps/stateless": 20
+        "neoan3-apps/stateless": 20,
+        "neoan3-apps/crypto-js": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

@@ -6,6 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Neoan3\\Apps\\' => array($vendorDir . '/neoan3-apps/db', $vendorDir . '/neoan3-apps/jwt', $vendorDir . '/neoan3-apps/ops', $vendorDir . '/neoan3-apps/stateless'),
+    'Neoan3\\Apps\\' => array($vendorDir . '/neoan3-apps/crypto-js', $vendorDir . '/neoan3-apps/db', $vendorDir . '/neoan3-apps/jwt', $vendorDir . '/neoan3-apps/ops', $vendorDir . '/neoan3-apps/stateless'),
     'Firebase\\JWT\\' => array($vendorDir . '/firebase/php-jwt/src'),
 );

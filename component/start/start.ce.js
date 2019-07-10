@@ -4,34 +4,33 @@ new Vue({
         user: {
             email: '',
             password: ''
-        }
+        },
+        loginAttempt : {}
     },
     created() {
         this.beginSession();
     },
     methods: {
-        login(obj) {
-            let loginAttempt = CryptoJS.AES.encrypt(JSON.stringify(obj), 'tunnel').toString();
-            console.log(loginAttempt);
-            axios.get('./Login', {
-                params: {
-                    email: obj.email,
-                    password: obj.password
-                }
+        login() {
+            this.encryptUser(this.user);
+            api.post('Login', this.loginAttempt)
+                .then(function (response) {
+                    console.log(response.data.token);
+                }).catch(function (error) {
+                    console.log(error);
             })
-                .then(response => {
-                    console.log(response.data);
-                    return response.data;
-                })
+
         },
         registerUser(obj) {
             console.log(obj);
         },
+        encryptUser(obj){
+            this.loginAttempt.email = CryptoJS.AES.encrypt(JSON.stringify(obj.email), 'tunnel').toString();
+            this.loginAttempt.password = CryptoJS.AES.encrypt(JSON.stringify(obj.password), 'tunnel').toString();
+            console.log(this.loginAttempt);
+        },
         beginSession: function () {
-            /*axios.get('./Profile')
-                .then(function (response) {
-                    console.log(response);
-            })*/
+            console.log('Start');
         }
     },
 });
