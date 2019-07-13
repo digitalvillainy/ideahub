@@ -77,7 +77,6 @@ class Ideahub extends Serve{
                 ['src' => base . 'node_modules/vue/dist/vue.js'],
                 ['src' => base . 'node_modules/axios/dist/axios.js'],
                 ['src' => path . '/frame/ideahub/axios-wrapper.js', 'data' => ['base' => base]],
-                ['src' => base . 'node_modules/lodash/lodash.min.js'],
                 ['src' => base . 'node_modules/crypto-js/crypto-js.js'],
                 ['src' => base . 'asset/fontawesome/js/all.min.js'],
             ],

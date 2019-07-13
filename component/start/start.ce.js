@@ -5,7 +5,14 @@ new Vue({
             email: '',
             password: ''
         },
-        loginAttempt : {}
+        loginAttempt : [
+            {
+                email: ''
+            },
+            {
+                password: ''
+            }
+        ]
     },
     created() {
         this.beginSession();
@@ -25,8 +32,8 @@ new Vue({
             console.log(obj);
         },
         encryptUser(obj){
-            this.loginAttempt.email = CryptoJS.AES.encrypt(JSON.stringify(obj.email), 'tunnel').toString();
-            this.loginAttempt.password = CryptoJS.AES.encrypt(JSON.stringify(obj.password), 'tunnel').toString();
+            this.loginAttempt[0].email = CryptoJS.AES.encrypt(JSON.stringify(obj.email), 'tunnel').toString();
+            this.loginAttempt[1].password = CryptoJS.AES.encrypt(JSON.stringify(obj.password), 'tunnel').toString();
             console.log(this.loginAttempt);
         },
         beginSession: function () {
