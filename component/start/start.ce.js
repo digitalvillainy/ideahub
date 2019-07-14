@@ -12,19 +12,22 @@ new Vue({
             {
                 password: ''
             }
-        ]
+        ],
     },
-    created() {
-        this.beginSession();
+    created(){
+        let random = Math.random().toString(36).substr(2);
+        localStorage.key =  random + random;
     },
     methods: {
         login() {
             this.encryptUser(this.user);
-            api.post('Login', this.loginAttempt)
+            api.post('Login', this.user)
                 .then(function (response) {
-                    console.log(response.data.token);
+                    if(typeof response.data.token !== 'undefined'){
+                        localStorage.token = CryptoJS.AES.encrypt(JSON.stringify(response.data.token), localStorage.key);
+                    }
                 }).catch(function (error) {
-                    console.log(error);
+                    console.error(error);
             })
 
         },
@@ -32,12 +35,15 @@ new Vue({
             console.log(obj);
         },
         encryptUser(obj){
-            this.loginAttempt[0].email = CryptoJS.AES.encrypt(JSON.stringify(obj.email), 'tunnel').toString();
-            this.loginAttempt[1].password = CryptoJS.AES.encrypt(JSON.stringify(obj.password), 'tunnel').toString();
-            console.log(this.loginAttempt);
+            // TODO: Passing encryption to PHP not working.
+            this.loginAttempt[0].email = CryptoJS.AES.encrypt(JSON.stringify(obj.email), this.session).toString();
+            this.loginAttempt[1].password = CryptoJS.AES.encrypt(JSON.stringify(obj.password), this.session).toString();
         },
-        beginSession: function () {
-            console.log('Start');
+        testSession(){
+            if(typeof localStorage.token !== 'undefined' || typeof localStorage.time !== 'undefined'){
+                let fooToken = CryptoJS.AES.decrypt(localStorage.token.toString(), localStorage.key);
+                return JSON.parse(fooToken.toString(CryptoJS.enc.Utf8));
+            }
         }
     },
 });

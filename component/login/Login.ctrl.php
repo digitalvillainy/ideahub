@@ -29,26 +29,25 @@ class Login extends Ideahub {
      */
     function postLogin($credentials) {
         // TODO: Need explanation about CryptoJsAes
-        $this->input['email'] = CryptoJsAes::cryptoJsAesDecrypt('tunnel', $credentials[0]['email']);
-        $this->input['password'] = CryptoJsAes::cryptoJsAesDecrypt('tunnel', $credentials[1]['password']);
-        if (!isset($this->input['email']) || !isset($this->input['password'])) {
+            //$this->input['email'] = CryptoJsAes::cryptoJsAesDecrypt('tunnel', $credentials[0]['email']);
+            //$this->input['password'] = CryptoJsAes::cryptoJsAesDecrypt('tunnel', $credentials[1]['password']);
+        if (!isset($credentials['email']) || !isset($credentials['password'])) {
             throw new RouteException('missing values', 401);
         }
-
-        $existingUser = UserModel::find(['email' => $this->input['email']]);
+        $existingUser = UserModel::find(['email' => $credentials['email']]);
         if (empty($existingUser)) {
-            throw new RouteException('unauthorized email', 401);
+            throw new RouteException('unauthorized', 401);
         }
         $foundUser = $existingUser[0];
         $password = Db::easy('user_password.password', ['user_password.id' => '$' . $foundUser['id']]);
         if (empty($password)) {
-            throw new RouteException('unauthorized password', 401);
+            throw new RouteException('unauthorized', 401);
         }
-        if (Ops::decrypt($password[0]['password'], $this->input['password']) == $this->input['password']) {
+        if (Ops::decrypt($password[0]['password'], $credentials['password']) == $credentials['password']) {
             $jwt = Stateless::assign($foundUser['id'], 'user');
             return ['token' => $jwt];
         }
-        throw new RouteException('unauthorized overall', 401);
+        throw new RouteException('unauthorized', 401);
     }
 
 }
