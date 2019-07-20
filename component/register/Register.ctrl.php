@@ -10,6 +10,7 @@ class Register extends Ideahub {
     /**
      * @param $newUser
      *
+     * @return array
      * @throws \Neoan3\Apps\DbException
      * @throws RouteException
      */
@@ -22,7 +23,7 @@ class Register extends Ideahub {
         if(!empty($existingUser)){
             throw new RouteException('already registered', 403);
         }
-        $registeredUser = UserModel::register($newUser['email'],$newUser['password']);
+        $registeredUser = UserModel::register($newUser['email'],$newUser['password'],true);
         return ['registration'=>'successful'];
     }
 

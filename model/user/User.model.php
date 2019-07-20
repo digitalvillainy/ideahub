@@ -71,11 +71,11 @@ class UserModel extends IndexModel {
      * @throws DbException
      */
     static function register($email, $password, $hashed = false) {
-        $id = '$' . Db::uuid()->uuid;
+        $id = Db::uuid()->uuid;
         $insertPassword = $hashed ? '=' . password_hash($password, PASSWORD_DEFAULT) : Ops::encrypt($password, $password);
-        Db::ask('user', ['id' => $id, 'user_type' => 'user']);
-        Db::ask('user_email', ['user_id' => $id, 'email' => $email, 'confirm_code' => Ops::hash(28)]);
-        Db::ask('user_password', ['id' => $id, 'password' => $insertPassword]);
+        Db::ask('user', ['id' => '$'. $id, 'user_type' => 'user']);
+        Db::ask('user_email', ['user_id' => '$'. $id, 'email' => $email, 'confirm_code' => Ops::hash(28)]);
+        Db::ask('user_password', ['user_id' => '$'. $id, 'password' => $insertPassword]);
         return self::byId($id);
     }
 }
