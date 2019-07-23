@@ -28,9 +28,6 @@ class Login extends Ideahub {
      * @throws \Exception
      */
     function postLogin($credentials) {
-        // TODO: Need explanation about CryptoJsAes
-            //$this->input['email'] = CryptoJsAes::cryptoJsAesDecrypt('tunnel', $credentials[0]['email']);
-            //$this->input['password'] = CryptoJsAes::cryptoJsAesDecrypt('tunnel', $credentials[1]['password']);
         if (!isset($credentials['email']) || !isset($credentials['password'])) {
             throw new RouteException('missing values', 401);
         }
@@ -43,7 +40,7 @@ class Login extends Ideahub {
         if (empty($password)) {
             throw new RouteException('unauthorized', 401);
         }
-        if (Ops::decrypt($password[0]['password'], $credentials['password']) == $credentials['password']) {
+        if (password_verify($credentials['password'], $password[0]['password']) == $credentials['password']) {
             $jwt = Stateless::assign($foundUser['id'], 'user');
             return ['token' => $jwt];
         }

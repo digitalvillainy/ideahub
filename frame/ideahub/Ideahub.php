@@ -68,6 +68,9 @@ class Ideahub extends Serve{
                     'type'=>'image/png',
                     'rel'=>'icon',
                     'href'=>'asset/neoan-favicon.png'
+                ],
+                [
+                    'href' => base . 'node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css'
                 ]
             ],
             'meta'       => [
@@ -78,7 +81,7 @@ class Ideahub extends Serve{
                 ['src' => base . 'node_modules/axios/dist/axios.js'],
                 ['src' => path . '/frame/ideahub/axios-wrapper.js', 'data' => ['base' => base]],
                 ['src' => base . 'node_modules/crypto-js/crypto-js.js'],
-                ['src' => base . 'asset/fontawesome/js/all.min.js'],
+                ['src' => base . 'node_modules/@fortawesome/fontawesome-free/js/all.min.js'],
             ],
             'stylesheet'=>[
             ''.base.'frame/ideahub/ideahub.css',

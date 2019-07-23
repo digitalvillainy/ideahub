@@ -148,12 +148,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sroehrl/neoan3-db.git",
-                "reference": "0eba922567ecf5df601414f053d3704f5f96ced2"
+              "reference": "094125c82d7215be3cacb9faad5deac416a3137b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sroehrl/neoan3-db/zipball/0eba922567ecf5df601414f053d3704f5f96ced2",
-                "reference": "0eba922567ecf5df601414f053d3704f5f96ced2",
+              "url": "https://api.github.com/repos/sroehrl/neoan3-db/zipball/094125c82d7215be3cacb9faad5deac416a3137b",
+              "reference": "094125c82d7215be3cacb9faad5deac416a3137b",
                 "shasum": ""
             },
             "require": {
@@ -178,7 +178,7 @@
                 }
             ],
             "description": "neoan3 mysqli class",
-            "time": "2019-06-14T16:02:27+00:00"
+          "time": "2019-07-19T13:47:18+00:00"
         },
         {
             "name": "neoan3-apps/jwt",
@@ -186,12 +186,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sroehrl/neoan3-jwt.git",
-                "reference": "69e4020641bcea9b21a8f211d1af86b28c2275e5"
+              "reference": "c3b560daf4f484e49491a931dd7f89fc344763e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sroehrl/neoan3-jwt/zipball/69e4020641bcea9b21a8f211d1af86b28c2275e5",
-                "reference": "69e4020641bcea9b21a8f211d1af86b28c2275e5",
+              "url": "https://api.github.com/repos/sroehrl/neoan3-jwt/zipball/c3b560daf4f484e49491a931dd7f89fc344763e8",
+              "reference": "c3b560daf4f484e49491a931dd7f89fc344763e8",
                 "shasum": ""
             },
             "require": {
@@ -214,7 +214,7 @@
                 }
             ],
             "description": "neoan3 wrapper for JSON WEB TOKEN using Firebase",
-            "time": "2019-06-13T12:32:40+00:00"
+          "time": "2019-07-13T17:33:36+00:00"
         },
         {
             "name": "neoan3-apps/ops",
@@ -251,12 +251,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sroehrl/neoan3-stateless.git",
-                "reference": "f6823ec40a5e6a54368c623c6bf25c69b6e551ab"
+              "reference": "6c389ccead1ae0232fd7c4de770a4555895b4bb5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sroehrl/neoan3-stateless/zipball/f6823ec40a5e6a54368c623c6bf25c69b6e551ab",
-                "reference": "f6823ec40a5e6a54368c623c6bf25c69b6e551ab",
+              "url": "https://api.github.com/repos/sroehrl/neoan3-stateless/zipball/6c389ccead1ae0232fd7c4de770a4555895b4bb5",
+              "reference": "6c389ccead1ae0232fd7c4de770a4555895b4bb5",
                 "shasum": ""
             },
             "require": {
@@ -279,7 +279,7 @@
                 }
             ],
             "description": "stateless authentication / verification for neoan3",
-            "time": "2019-06-02T00:36:45+00:00"
+          "time": "2019-07-13T17:37:09+00:00"
         }
     ],
     "packages-dev": [],
