@@ -16,7 +16,7 @@ class Register extends unicore {
     /**
      * @var array
      */
-    private $components = ['register'];
+    private $components = ['register','registerForm'];
     function __construct() {
         new Ideahub();
     }

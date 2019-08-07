@@ -18,7 +18,7 @@ class Start extends Unicore {
     /**
      * @var array
      */
-    private $components = ['start','register','registerForm'];
+    private $components = ['registerForm', 'register','start'];
 
     /**
      *

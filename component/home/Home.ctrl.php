@@ -6,8 +6,22 @@ namespace Neoan3\Components;
 use Neoan3\Core\Unicore;
 
 class Home extends Unicore {
+    private $components = ['home'];
+
     function init(){
-        $this->uni('ideahub')->hook('main','home')->output();
+        $this->uni('ideahub')
+            ->callback($this,'setup')
+             ->hook('main','home')
+             ->output();
+    }
+
+    /**
+     * @param $frame
+     */
+    function setup($frame){
+        foreach ($this->components as $component){
+            $frame->vueComponent($component);
+        }
     }
 
 }

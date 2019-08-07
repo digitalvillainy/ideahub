@@ -12,7 +12,7 @@
         <div class="field">
             <label for="username" class="label">Username</label>
             <input type="text"
-                   class="iput"
+                   class="input"
                    v-bind:class="{'is-warning':duplicate}"
                    id="username" required
                    v-model="username">
@@ -32,16 +32,16 @@
                    class="input"
                    id="email"
                    v-bind:class="{'is-warning':duplicate}"
+                   v-model="email"
                    required minlength="8">
         </div>
-        <div class="columns">
+        <div class="columns is-left is-mobile">
             <div class="column is-narrow">
-                <button class="button is-warning">Close</button>
+                <button class="button is-warning" v-on:click="clearFields()">CLEAR</button>
             </div>
             <div class="column is-narrow">
-                <button class="button is-primary">Register</button>
+                <button class="button is-primary" v-on:click="showModal=false">REGISTER</button>
             </div>
-
         </div>
     </div>
 </form>

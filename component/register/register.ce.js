@@ -1,5 +1,4 @@
-const registerForm = {
-    name: 'register-form',
+Vue.component('register-form', {
     data: () => {
         return {
             username: '',
@@ -29,17 +28,22 @@ const registerForm = {
         register() {
             this.processing = true;
             api.post('register', this._data).then((res) => {
-                localStorage.setItem('token', res.data.token);
+                localStorage.setItem('Token', res.data.token);
+                localStorage.setItem('User', res.data.user_name);
                 this.loggedIn = res.data.token;
                 this.process = false;
             }).catch((error) => {
                 this.duplicate = true;
                 this.processing = false;
+            }).then(() => {
+                window.location.href = '{{base}}register'
             })
         },
-        registerUser(){
-            console.log('wu-tang');
+        clearFields() {
+            this.email = '';
+            this.username = '';
+            this.password = '';
         }
     },
     template: document.querySelector('#register').innerHTML
-};
+});

@@ -8,10 +8,11 @@ new Vue({
         loggedIn: localStorage.token,
         localUser: {},
         showModal: false,
+        valid: false,
     },
-    mounted(){
+    mounted() {
         if (this.loggedIn) {
-            api.get('register').then(res =>{
+            api.get('register').then(res => {
                 this.localUser = res.data;
                 localStorage.User = JSON.stringify(res.data);
             }).catch(error => {
@@ -21,8 +22,8 @@ new Vue({
         }
     },
     methods: {
-        logout(){
-            if(this.loggedIn){
+        logout() {
+            if (this.loggedIn) {
                 api.delete('login').then(res => {
                     this.updateSession(false);
                 })
@@ -32,26 +33,19 @@ new Vue({
         },
         login() {
             // TODO: Replaced with Hashed Password
+            this.valid = true;
             api.post('Login', this.user)
                 .then(function (response) {
-                    if(typeof response.data.token !== 'undefined'){
-                        localStorage.token = response.data.token;
-                        localStorage.user = response.data.user;
-                    }
+                    this.updateSession(response.data.token);
+                    localStorage.setItem('user', JSON.stringify(response.data.user));
+                    this.localUser = response.data.user;
                 }).catch(function (error) {
-                    console.error(error);
-            }).then(function () {
-                window.location.href = '{{base}}home'
+                this.valid = false;
             });
-                this.updateSession(this.loggedIn);
+            window.location.href = '{{base}}home';
         },
-        registerUser(obj) {
-            // TODO: Create Register User
-            console.log('this is a test');
-            window.location.href = '{{base}}register'
-        },
-        updateSession(token){
-            if(token){
+        updateSession(token) {
+            if (token) {
                 localStorage.token = token;
                 this.loggedIn = token;
             } else {

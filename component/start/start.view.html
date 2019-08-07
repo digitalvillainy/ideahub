@@ -41,7 +41,11 @@
                    v-on:click.prevent="login(user)">
                     LOGIN
                 </a>
-                <a href="#" class="button is-info" @click="showModal = true">REGISTER</a>
+                <a href="#"
+                   class="button is-info"
+                   @click="showModal = true">
+                    REGISTER
+                </a>
             </div>
         </div>
     </div>
@@ -50,7 +54,21 @@
             - Created by Roberto Rivera -
         </span>
     </div>
+    <div class="modal" v-bind:class="{'is-active':showModal}" id="registration">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Register as a new user</p>
+                <button class="delete" type="button" aria-label="close" v-on:click="showModal=false"></button>
+            </header>
+            <section class="modal-card-body">
+                <div class="content">
+                    <register-form></register-form>
+                </div>
+            </section>
+            <footer class="modal-card-foot">
+                <button class="button" type="button" @click="showModal=false">close</button>
+            </footer>
+        </div>
+    </div>
 </section>
-<div class="conatainer" id="registration">
-    <register-form v-show="showModal" @close="showModal = false"></register-form>
-</div>

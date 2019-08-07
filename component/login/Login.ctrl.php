@@ -40,9 +40,8 @@ class Login extends Ideahub {
             throw new RouteException('unauthorized', 401);
         }
         if (password_verify($credentials['password'], $password[0]['password']) == $credentials['password']) {
-            $jwt = Stateless::assign($foundUser['id'], 'user');
-            Session::login($existingUser['id'],$existingUser['roles'],$existingUser['user_type']);
-            return ['token' => $jwt, 'user'=>$existingUser];
+            $jwt = Stateless::assign($foundUser['id'], 'user',['exp'=>time()+(2*60*60)]);
+            return ['token' => $jwt, 'user'=>$credentials['email']];
         }
         throw new RouteException('unauthorized', 401);
     }
