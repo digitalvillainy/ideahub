@@ -10,7 +10,8 @@
         "neoan3-apps/db": "dev-master",
         "neoan3-apps/jwt": "dev-master",
         "neoan3-apps/stateless": "dev-master",
-        "neoan3-apps/crypto-js": "dev-master"
+        "neoan3-apps/crypto-js": "dev-master",
+        "neoan3-apps/session": "dev-master"
     },
     "license": "MIT",
     "authors": [

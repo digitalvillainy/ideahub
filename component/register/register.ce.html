@@ -1,0 +1,47 @@
+<form id="register-form" v-on:submit.prevent="register">
+    <div v-if="loggedIn">
+        <h2 class="subtitle">You are logged in</h2>
+        <button type="button" class="button" v-on:click="logout">SIGN OUT</button>
+    </div>
+    <div v-else>
+        <article class="message is-danger" v-if="duplicate">
+            <div class="message-body">
+                Username or Email is Taken
+            </div>
+        </article>
+        <div class="field">
+            <label for="username" class="label">Username</label>
+            <input type="text"
+                   class="iput"
+                   v-bind:class="{'is-warning':duplicate}"
+                   id="username" required
+                   v-model="username">
+        </div>
+        <div class="field">
+            <label for="ped" class="label">Password</label>
+            <input type="password"
+                   class="input"
+                   id="ped"
+                   required
+                   minlength="8"
+                   v-model="password">
+        </div>
+        <div class="field">
+            <label for="email" class="label">Email</label>
+            <input type="email"
+                   class="input"
+                   id="email"
+                   v-bind:class="{'is-warning':duplicate}"
+                   required minlength="8">
+        </div>
+        <div class="columns">
+            <div class="column is-narrow">
+                <button class="button is-warning">Close</button>
+            </div>
+            <div class="column is-narrow">
+                <button class="button is-primary">Register</button>
+            </div>
+
+        </div>
+    </div>
+</form>

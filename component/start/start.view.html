@@ -41,22 +41,16 @@
                    v-on:click.prevent="login(user)">
                     LOGIN
                 </a>
-                <a href="#"
-                   class="button is-info"
-                   v-on:click.prevent="registerUser(user)">
-                    REGISTER
-                </a>
-                <a href="#"
-                   class="button is-danger"
-                   v-on:click.prevent="testSession()">
-                    TEST
-                </a>
+                <a href="#" class="button is-info" @click="showModal = true">REGISTER</a>
             </div>
         </div>
     </div>
     <div class="hero-foot has-text-centered">
         <span>
-            - Created by Sir Dr. Roberto Rivera PHD ESQ III -
+            - Created by Roberto Rivera -
         </span>
     </div>
 </section>
+<div class="conatainer" id="registration">
+    <register-form v-show="showModal" @close="showModal = false"></register-form>
+</div>

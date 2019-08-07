@@ -6,6 +6,7 @@ namespace Neoan3\Components;
 use Neoan3\Apps\Stateless;
 use Neoan3\Frame\Ideahub;
 use Neoan3\Model\UserModel;
+//use Neoan3\Apps\Session;
 
 class Profile extends Ideahub {
     /**
@@ -21,7 +22,7 @@ class Profile extends Ideahub {
         return $user;
     }
 
-    function postProfile($obj) {
+    /*function postProfile($obj) {
 
-    }
+    }*/
 }

@@ -5,39 +5,64 @@ new Vue({
             email: '',
             password: ''
         },
-        loginAttempt : [
-            {
-                email: ''
-            },
-            {
-                password: ''
-            }
-        ],
+        loggedIn: localStorage.token,
+        localUser: {},
+        showModal: false,
     },
-    created(){
-        let random = Math.random().toString(36).substr(2);
-        localStorage.key =  random + random;
+    mounted(){
+        if (this.loggedIn) {
+            api.get('register').then(res =>{
+                this.localUser = res.data;
+                localStorage.User = JSON.stringify(res.data);
+            }).catch(error => {
+                this.loggedIn = false;
+                this.logout();
+            })
+        }
     },
     methods: {
+        logout(){
+            if(this.loggedIn){
+                api.delete('login').then(res => {
+                    this.updateSession(false);
+                })
+            } else {
+                this.updateSession(false);
+            }
+        },
         login() {
+            // TODO: Replaced with Hashed Password
             api.post('Login', this.user)
                 .then(function (response) {
                     if(typeof response.data.token !== 'undefined'){
-                        console.log(response.data.token);
+                        localStorage.token = response.data.token;
+                        localStorage.user = response.data.user;
                     }
                 }).catch(function (error) {
                     console.error(error);
-            })
-
+            }).then(function () {
+                window.location.href = '{{base}}home'
+            });
+                this.updateSession(this.loggedIn);
         },
         registerUser(obj) {
-            console.log(obj);
+            // TODO: Create Register User
+            console.log('this is a test');
+            window.location.href = '{{base}}register'
         },
-        testSession(){
-            if(typeof localStorage.token !== 'undefined' || typeof localStorage.time !== 'undefined'){
-                let fooToken = CryptoJS.AES.decrypt(localStorage.token.toString(), localStorage.key);
-                return JSON.parse(fooToken.toString(CryptoJS.enc.Utf8));
+        updateSession(token){
+            if(token){
+                localStorage.token = token;
+                this.loggedIn = token;
+            } else {
+                api.delete('login');
+                delete localStorage.user;
+                delete localStorage.token;
+                this.localUser = {};
+                this.loggedIn = false;
             }
-        }
+        },
     },
 });
+
+

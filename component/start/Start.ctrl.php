@@ -6,6 +6,7 @@ namespace Neoan3\Components;
 use Neoan3\Apps\Ops;
 use Neoan3\Apps\Db;
 use Neoan3\Apps\DbException;
+use Neoan3\Apps\Session;
 use Neoan3\Core\Unicore;
 
 /**
@@ -17,7 +18,7 @@ class Start extends Unicore {
     /**
      * @var array
      */
-    private $components = ['start'];
+    private $components = ['start','register','registerForm'];
 
     /**
      *
@@ -37,5 +38,10 @@ class Start extends Unicore {
             $frame->vueComponent($component);
         }
     }
+
+    function newSession($userId){
+        Session::login($userId);
+    }
+
 
 }

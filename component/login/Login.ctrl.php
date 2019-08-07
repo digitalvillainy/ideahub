@@ -4,12 +4,12 @@
 namespace Neoan3\Components;
 
 use Neoan3\Apps\Db;
-use Neoan3\Apps\Ops;
+use Neoan3\Apps\DbException;
 use Neoan3\Apps\Stateless;
 use Neoan3\Core\RouteException;
 use Neoan3\Frame\Ideahub;
 use Neoan3\Model\UserModel;
-use Neoan3\Apps\CryptoJsAes;
+use Neoan3\Apps\Session;
 
 
 /**
@@ -23,28 +23,36 @@ class Login extends Ideahub {
      * @param $credentials
      *
      * @return array
-     * @throws \Neoan3\Apps\DbException
+     * @throws DbException
      * @throws RouteException
-     * @throws \Exception
      */
     function postLogin($credentials) {
+        $existingUser = UserModel::find(['email' => $credentials['email']]);
+        $foundUser = $existingUser[0];
+        $password = Db::easy('user_password.password', ['user_password.user_id' => '$' . $foundUser['id']]);
         if (!isset($credentials['email']) || !isset($credentials['password'])) {
             throw new RouteException('missing values', 401);
         }
-        $existingUser = UserModel::find(['email' => $credentials['email']]);
         if (empty($existingUser)) {
             throw new RouteException('unauthorized', 401);
         }
-        $foundUser = $existingUser[0];
-        $password = Db::easy('user_password.password', ['user_password.id' => '$' . $foundUser['id']]);
         if (empty($password)) {
             throw new RouteException('unauthorized', 401);
         }
         if (password_verify($credentials['password'], $password[0]['password']) == $credentials['password']) {
             $jwt = Stateless::assign($foundUser['id'], 'user');
-            return ['token' => $jwt];
+            Session::login($existingUser['id'],$existingUser['roles'],$existingUser['user_type']);
+            return ['token' => $jwt, 'user'=>$existingUser];
         }
         throw new RouteException('unauthorized', 401);
+    }
+
+    /**
+     * @throws RouteException
+     */
+    function deleteLogin(){
+        $jwt = Stateless::restrict();
+        Session::logout();
     }
 
 }
