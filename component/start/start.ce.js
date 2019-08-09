@@ -36,13 +36,15 @@ new Vue({
             this.valid = true;
             api.post('Login', this.user)
                 .then(function (response) {
-                    this.updateSession(response.data.token);
                     localStorage.setItem('user', JSON.stringify(response.data.user));
+                    localStorage.Token = response.data.token;
+                    localStorage.User = response.data.user;
                     this.localUser = response.data.user;
+                    this.updateSession(response.data.token);
                 }).catch(function (error) {
                 this.valid = false;
             });
-            window.location.href = '{{base}}home';
+            // window.location.href = '{{base}}home';
         },
         updateSession(token) {
             if (token) {

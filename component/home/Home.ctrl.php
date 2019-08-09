@@ -4,13 +4,17 @@
 namespace Neoan3\Components;
 
 use Neoan3\Core\Unicore;
+use Neoan3\Frame\Ideahub;
 
 class Home extends Unicore {
-    private $components = ['home'];
+    private $components = ['navbar','home'];
+    function __construct() {
+        new Ideahub();
+    }
 
     function init(){
         $this->uni('ideahub')
-            ->callback($this,'setup')
+             ->callback($this,'setup')
              ->hook('main','home')
              ->output();
     }

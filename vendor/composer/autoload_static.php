@@ -24,7 +24,8 @@ class ComposerStaticInit08c655667aeb73cd10826393dc2d68c6
             1 => __DIR__ . '/..' . '/neoan3-apps/db',
             2 => __DIR__ . '/..' . '/neoan3-apps/jwt',
             3 => __DIR__ . '/..' . '/neoan3-apps/ops',
-            4 => __DIR__ . '/..' . '/neoan3-apps/stateless',
+            4 => __DIR__ . '/..' . '/neoan3-apps/session',
+            5 => __DIR__ . '/..' . '/neoan3-apps/stateless',
         ),
         'Firebase\\JWT\\' => 
         array (

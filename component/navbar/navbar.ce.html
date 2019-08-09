@@ -1,0 +1,35 @@
+<section id="navbar">
+    <nav class="navbar is-fixed-top is-dark" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a href="{{base}}home" class="navbar-item">
+                <span>IdeaHub</span>
+            </a>
+            <a href="#" class="navbar-burger burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div class="navbar-divider"></div>
+        <div class="navbar-menu">
+        <!-- TODO: Update into it's own search component -->
+            <div class="navbar-item navbar-end is-expanded">
+                <input type="search" class="input is-primary"
+                       placeholder="Search for stories here. . . ">
+            </div>
+            <div class="navbar-end">
+                <a href="{{base}}alert" class="navbar-item">
+                    <i class="fas fa-bell"></i>
+                </a>
+                <a href="{{base}}profile" class="navbar-item">
+                    <div class="column is-1">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="column is-1">
+                        {{user.name}}
+                    </div>
+                </a>
+            </div>
+        </div>
+    </nav>
+</section>

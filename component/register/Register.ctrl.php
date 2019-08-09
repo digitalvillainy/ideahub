@@ -16,7 +16,7 @@ class Register extends unicore {
     /**
      * @var array
      */
-    private $components = ['register','registerForm'];
+    private $components = ['register'];
     function __construct() {
         new Ideahub();
     }
@@ -55,7 +55,7 @@ class Register extends unicore {
         if(!empty($existingUser)){
             throw new RouteException('already registered', 403);
         }
-        $registeredUser = UserModel::register($newUser['email'],$newUser['password'],true);
+        $registeredUser = UserModel::register($newUser['email'],$newUser['password'], $newUser['username'],true);
         return ['registration'=>'successful'];
     }
 

@@ -35,8 +35,6 @@ Vue.component('register-form', {
             }).catch((error) => {
                 this.duplicate = true;
                 this.processing = false;
-            }).then(() => {
-                window.location.href = '{{base}}register'
             })
         },
         clearFields() {
