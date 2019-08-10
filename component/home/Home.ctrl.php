@@ -7,7 +7,7 @@ use Neoan3\Core\Unicore;
 use Neoan3\Frame\Ideahub;
 
 class Home extends Unicore {
-    private $components = ['navbar','home'];
+    private $components = ['profile','search','navbar','home'];
     function __construct() {
         new Ideahub();
     }

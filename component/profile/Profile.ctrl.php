@@ -6,9 +6,15 @@ namespace Neoan3\Components;
 use Neoan3\Apps\Stateless;
 use Neoan3\Frame\Ideahub;
 use Neoan3\Model\UserModel;
-//use Neoan3\Apps\Session;
+use Neoan3\Core\Unicore;
 
-class Profile extends Ideahub {
+
+class Profile extends unicore {
+    private $components = ['profile'];
+    function __construct() {
+        new Ideahub();
+    }
+
     /**
      * @param $obj
      *
@@ -22,7 +28,15 @@ class Profile extends Ideahub {
         return $user;
     }
 
-    /*function postProfile($obj) {
+    /**
+     * @param $frame
+     */
+    function setup($frame){
+        foreach ($this->components as $component){
+            $frame->vueComponent($component);
+        }
+    }
 
-    }*/
+
+
 }
