@@ -16,17 +16,25 @@ class Profile extends unicore {
     }
 
     /**
-     * @param $obj
+     * @param $token
      *
      * @return mixed
-     * @throws \Neoan3\Core\RouteException
      * @throws \Neoan3\Apps\DbException
+     * @throws \Neoan3\Core\RouteException
      */
     function getProfile() {
+        // TODO: Update get Profile
         $jwt = Stateless::restrict('user');
         $user = UserModel::byId($jwt['jti']);
         return $user;
     }
+
+    function postProfile($obj){
+        // TODO: create post method.
+        echo '<pre>';
+        print_r($obj);
+    }
+
 
     /**
      * @param $frame

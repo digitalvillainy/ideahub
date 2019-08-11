@@ -18,6 +18,22 @@
                    v-model="username">
         </div>
         <div class="field">
+            <label for="firstName" class="label">First Name</label>
+            <input type="text"
+                   class="input"
+                   v-bind:class="{'is-warning':duplicate}"
+                   id="firstName" required
+                   v-model="firstName">
+        </div>
+        <div class="field">
+            <label for="lastName" class="label">Last Name</label>
+            <input type="text"
+                   class="input"
+                   v-bind:class="{'is-warning':duplicate}"
+                   id="lastName" required
+                   v-model="lastName">
+        </div>
+        <div class="field">
             <label for="ped" class="label">Password</label>
             <input type="password"
                    class="input"

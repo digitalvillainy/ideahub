@@ -1,7 +1,7 @@
 new Vue({
     el: '#home',
     data: {
-        newNavValue: 'Lorem Ipsum'
+        lorem: 'ipsum'
     },
     mounted() {
         // this.navtest();

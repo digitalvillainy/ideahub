@@ -2,6 +2,8 @@ Vue.component('register-form', {
     data: () => {
         return {
             username: '',
+            firstName: '',
+            lastName: '',
             password: '',
             email: '',
             showModal: false,

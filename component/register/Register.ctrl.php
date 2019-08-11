@@ -55,7 +55,7 @@ class Register extends unicore {
         if(!empty($existingUser)){
             throw new RouteException('already registered', 403);
         }
-        $registeredUser = UserModel::register($newUser['email'],$newUser['password'], $newUser['username'],true);
+        $registeredUser = UserModel::register($newUser['email'],$newUser['password'], $newUser['username'], $newUser['firstName'], $newUser['lastName'], true);
         return ['registration'=>'successful'];
     }
 

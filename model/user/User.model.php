@@ -67,17 +67,21 @@ class UserModel extends IndexModel {
      * @param      $email
      * @param      $password
      * @param      $username
+     * @param      $firstName
+     * @param      $lastName
      * @param bool $hashed
      *
      * @return array
      * @throws DbException
      */
-    static function register($email, $password, $username, $hashed = false) {
+    static function register($email, $password, $username, $firstName, $lastName,$hashed = false) {
         $id = Db::uuid()->uuid;
         $insertPassword = $hashed ? '=' . password_hash($password, PASSWORD_DEFAULT) : Ops::encrypt($password, $password);
         Db::ask('user', ['id' => '$'. $id, 'user_type' => 'user', 'user_name' => $username]);
         Db::ask('user_email', ['user_id' => '$'. $id, 'email' => $email, 'confirm_code' => Ops::hash(28)]);
         Db::ask('user_password', ['user_id' => '$'. $id, 'password' => $insertPassword]);
+        Db::ask('user_role', ['user_id' => '$'. $id, 'role' => 'user']);
+        Db::ask('user_profile', ['user_id' => '$'. $id, 'first_name' => $firstName, 'last_name' => $lastName]);
         return self::byId($id);
     }
 }

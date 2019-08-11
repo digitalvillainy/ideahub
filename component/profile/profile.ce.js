@@ -1,15 +1,37 @@
-Vue.component('profile',{
+Vue.component('profile', {
     data: () => {
         return {
-            wu: 'tang',
+            user: {
+                name: localStorage.User,
+                email: localStorage.Email,
+                token: localStorage.Token
+            }
         }
     },
     mounted() {
-        this.profileOutput()
+        this.loadCurrentUser();
     },
     methods: {
-        profileOutput() {
-            console.log(this.wu);
+        updateCurrentUser() {
+            api.post('profile').then(res => {
+                // TODO: update current user data assignment
+                console.log(res.data);
+            }).catch(error => {
+                console.log(error);
+            }).then(() => {
+                console.log('complete');
+            });
+            console.log(this.user.name);
+        },
+        loadCurrentUser() {
+            api.get('profile').then(res => {
+                console.log(res.data);
+            }).catch(error => {
+                console.log(error);
+            }).then(() => {
+                console.log(`complete`);
+            });
+
         }
     },
     template: document.querySelector('#profile').innerHTML
